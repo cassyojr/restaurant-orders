@@ -1,0 +1,19 @@
+<form class="pb-2" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <input type="text" formControlName="order" class="form-control" placeholder="Enter dish">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="submit">Send order</button>
+            </div>
+        </div>
+        <small class="form-text text-muted">Enter 'Morning' or 'Night' followed by number of each dish all separated by
+            comma.</small>
+
+        <div class="alert alert-danger" *ngIf="hasErrors">
+            <div *ngIf="order.errors.required" role="alert">Please type your order time and dishes</div>
+            <div *ngIf="order.errors.hasValidOrderTime" role="alert">Invalid order time, please type 'Morning' or
+                'Night' followed by comma</div>
+            <div *ngIf="order.errors.isValidOrder" role="alert">Please type only numbers and commas for the dishes</div>
+        </div>
+    </div>
+</form>

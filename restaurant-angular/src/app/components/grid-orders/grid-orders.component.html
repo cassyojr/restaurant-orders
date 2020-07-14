@@ -1,0 +1,33 @@
+<table class="table table-sm table-striped border">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Dishes</th>
+            <th scope="col">Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngIf="!hasTableData; else tableData">
+            <td class="text-center" colspan="3">No orders created</td>
+        </tr>
+
+        <ng-template #tableData>
+            <tr *ngFor="let order of orders">
+                <th scope="row">{{ order.orderId }}</th>
+                <td> {{ order.dishes }} </td>
+                <td>{{ order.creationDate | date:'dd/MM/yyyy hh:mm'}}</td>
+            </tr>
+        </ng-template>
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshPage()">
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshPage()">
+        <option [ngValue]="5">5 items per page</option>
+        <option [ngValue]="10">10 items per page</option>
+    </select>
+</div>

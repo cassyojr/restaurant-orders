@@ -1,0 +1,12 @@
+<div class="py-3">
+    <h4>Dishes</h4>
+    <app-grid-dishes></app-grid-dishes>
+
+    <h4>Create Order:</h4>
+    <app-create-order (orderCreated)="onOrderCreated($event)"></app-create-order>
+
+    <app-order-preview [order]="order"></app-order-preview>
+
+    <h4>Orders created</h4>
+    <app-grid-orders></app-grid-orders>
+</div>

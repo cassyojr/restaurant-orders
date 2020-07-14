@@ -1,0 +1,16 @@
+<table class="table table-sm table-striped border">
+    <thead>
+        <tr>
+            <th scope="col">Dish Type</th>
+            <th scope="col">Morning</th>
+            <th scope="col">Night</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let group of dishGroups">
+            <th scope="row">({{ group?.id }}) {{ group?.type }}</th>
+            <td> {{ group?.morning?.name || 'Not Applicable' }} </td>
+            <td>{{ group?.night?.name || 'Not Aplicable' }}</td>
+        </tr>
+    </tbody>
+</table>
